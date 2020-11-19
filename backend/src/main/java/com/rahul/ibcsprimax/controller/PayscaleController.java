@@ -29,8 +29,9 @@ public class PayscaleController {
 		
 	}
 	
-	@PostMapping()
+	@PostMapping("/create")
 	public ResponseEntity<?> saveLowerGradePayscale(@RequestBody Payscale payscale) {
+		payscaleService.calculateOtherPayscale(payscale);
 		return  ResponseEntity.ok(HttpStatus.CREATED);
 	}
 	

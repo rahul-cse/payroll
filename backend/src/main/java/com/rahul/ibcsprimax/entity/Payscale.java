@@ -20,4 +20,54 @@ public class Payscale {
 	@OneToOne
 	@JoinColumn(nullable=false)
 	private Grade grade;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Double getBasic() {
+		return basic;
+	}
+
+	public void setBasic(Double basic) {
+		this.basic = basic;
+	}
+
+	public Double getHouseRent() {
+		return houseRent;
+	}
+
+	public void setHouseRent(Double houseRent) {
+		this.houseRent = houseRent;
+	}
+
+	public Double getMedicalAllowance() {
+		return medicalAllowance;
+	}
+
+	public void setMedicalAllowance(Double medicalAllowance) {
+		this.medicalAllowance = medicalAllowance;
+	}
+
+	public Grade getGrade() {
+		return grade;
+	}
+
+	public void setGrade(Grade grade) {
+		this.grade = grade;
+	}
+	
+	
 }
