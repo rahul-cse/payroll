@@ -1,0 +1,23 @@
+<div class="container mt-2">
+    <h5 class="text-center">Grade/Ranks Setting</h5>
+    <table class="table table-hover" *ngIf=viewTable>
+        <thead class="table-info">
+            <tr>
+                <th>SL#</th>
+                <th>Name</th>
+                <th>Superiority</th>
+                <th style="padding-right: 0"><span  style="color:blue;cursor:pointer" (click)=loadFormFunc() title="Add New"><fa-icon [icon]="faPlus"></fa-icon> Add</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let grade of gradeList;let i = index ">
+                <td>{{i+1}}</td>
+                <td>{{grade.name}}</td>
+                <td>{{grade.gradeEnum}}</td>
+                <td><span title="Edit" (click)="editFormFunc(grade.id)" style="cursor: pointer;color:orange"><fa-icon [icon]="faEdit"></fa-icon></span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <router-outlet></router-outlet>
+</div>

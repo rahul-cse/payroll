@@ -1,0 +1,28 @@
+<div class="row container">
+    <div class="box col-md-12">
+        <form class="box-body" (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <div class="row mt-1">
+                <label for="name" class="control-label col-md-3 text-right">Name<span class="text-danger">*</span></label>
+                <input type="text" name="name" class="form-control col-md-6" [(ngModel)]=grade.name required placeholder="Grade/Rank Name">
+            </div>
+            <input type="hidden" name="id" [(ngModel)]=grade.id>
+            <div class="row mt-1">
+                <label for="gradeEnum" class="control-label col-md-3 text-right">Superiority<span class="text-danger">*</span></label>
+                <select class="form-control col-md-6" name="gradeEnum" [(ngModel)]="grade.gradeEnum" required placeholder="Select Superiority">
+                    <option value=null>--Select Superiority--</option>
+                    <option *ngFor="let gradeEnum of grade.gradeEnums" [ngValue]="gradeEnum">{{gradeEnum}}</option>
+                </select>
+            </div>
+            <div class="footer text-center col-md-9 mt-2">
+                <button type="submit" class="btn btn-primary" style="width:18%;margin-right: 2px;" [disabled]="!f.valid">Save</button>
+                <button type="button" class="btn btn-danger" style="width:18%" (click)=goBack()>Cancel</button>
+            </div>
+
+            <div class="alert alert-success mt-2" role="alert" *ngIf="successFlag">
+                Grade Saved.
+            </div>
+        </form>
+    </div>
+    
+</div>
+
