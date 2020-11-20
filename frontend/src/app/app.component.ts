@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { faHome, faGraduationCap, faMoneyBill} from '@fortawesome/free-solid-svg-icons';
+import { faHome, faGraduationCap, faMoneyBill, faUser, faIndustry, faMoneyCheck} from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -12,4 +12,7 @@ export class AppComponent {
   faHome = faHome;
   faGraduationCap = faGraduationCap;
   faMoneyBill = faMoneyBill;
+  faUser = faUser;
+  faIndustry = faIndustry;
+  faMoneyCheck = faMoneyCheck;
 }

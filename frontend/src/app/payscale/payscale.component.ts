@@ -28,9 +28,11 @@ export class PayscaleComponent implements OnInit {
     this.viewTable = false;
     this.router.navigate(["/payscale/create"]);
   }
-
+  editFormFunc(id){
+    this.router.navigate(["payscale/edit",id]);
+  }
   getAllPayscale(){
-    //this.payscaleService.getAllGradeType().subscribe(data=>{console.log(data)});
+    this.payscaleService.getAllPayscale().subscribe(data=>{this.payscaleList = data});
   }
 
   getLowestGrade(){

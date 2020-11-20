@@ -5,15 +5,16 @@
                 <label for="name" class="control-label col-md-3 text-right">Name<span class="text-danger">*</span></label>
                 <input type="text" name="name" class="form-control col-md-6" [(ngModel)]=payscale.name required placeholder="Payscale Name">
             </div>
+            <input type="hidden" name="id" [(ngModel)]=payscale.id>
             <div class="row mt-1">
                 <label for="basic" class="control-label col-md-3 text-right">Lowest Grade<span class="text-danger">*</span></label>
-                <select class="form-control col-md-6" name="grade" [(ngModel)]="grade.id" required>
-                    <option  [ngValue]="grade.id">{{grade.name}}</option>
+                <select class="form-control col-md-6" name="grade" [(ngModel)]="payscale.grade.id" required>
+                    <option  [ngValue]="payscale.grade.id">{{payscale.grade.name}}</option>
                 </select>
             </div>
-            <div class="row mt-1">
+            <div class="row mt-1" *ngIf="payscale.grade.gradeEnum=='Six'">
                 <label for="basic" class="control-label col-md-3 text-right">Basic<span class="text-danger">*</span></label>
-                <input type="number" name="basic" class="form-control col-md-6" [(ngModel)]=payscale.basic required placeholder="Basic Salary">
+                <input type="number" step="any" name="basic" class="form-control col-md-6" [(ngModel)]=payscale.basic required placeholder="Basic Salary">
             </div>
             <div class="footer text-center col-md-9 mt-2">
                 <button type="submit" class="btn btn-primary" style="width:18%;margin-right: 2px;" [disabled]="!f.valid">Save</button>

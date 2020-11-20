@@ -42,7 +42,7 @@ export class GradeFormComponent implements OnInit {
   }
 
   getGradeEnums(){
-    this.gradeService.getGradeType().subscribe(data=>{this.grade.gradeEnums = data; });
+    this.gradeService.getGradeType().subscribe(data=>{this.grade.gradeEnums = data;});
   }
   
 

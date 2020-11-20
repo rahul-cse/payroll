@@ -12,7 +12,15 @@
             </tr>
         </thead>
         <tbody>
+            <tr *ngFor="let payscale of payscaleList;let i = index">
+                <td>{{i+1}}</td>
+                <td>{{payscale.name}}</td>
+                <td>{{payscale.basic}}</td>
+                <td>{{payscale.houseRent}}</td>
+                <td>{{payscale.medicalAllowance}}</td>
+                <td><span title="Edit" (click)="editFormFunc(payscale.id)" style="cursor: pointer;color:orange"><fa-icon [icon]="faEdit"></fa-icon></span></td>
 
+            </tr>
         </tbody>
     </table>
     <router-outlet></router-outlet>  

@@ -1,0 +1,62 @@
+<div class="row container">
+    <div class="box col-md-12">
+        <h5 class="text-center bg-light">Company Info</h5>
+        <form class="box-body" (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <p class="text-center font-italic">-- Company Details --</p>
+            <div class="row mt-1">
+                <label for="name" class="control-label col-md-3 text-right">Company Name<span class="text-danger">*</span></label>
+                <input type="text" name="name" class="form-control col-md-6" [(ngModel)]=company.name required placeholder="Company Name">
+            </div>
+            <input type="hidden" name="id" [(ngModel)]=company.id>
+            <input type="hidden" name="bankAccount" [(ngModel)]=company.bankAccount.id>
+            
+            <!-- <div class="row mt-1">
+                <label for="address" class="control-label col-md-3 text-right">Address</label>
+                <textarea name="address" class="form-control col-md-6" [(ngModel)]=company.address placeholder="Address"></textarea>
+            </div> -->
+            
+            <p class="text-center font-italic">-- Bank Details --</p>
+            <div class="row mt-1">
+                <label for="accountName" class="control-label col-md-3 text-right">A/C Name<span class="text-danger">*</span></label>
+                <input type="text" name="accountName" class="form-control col-md-6" [(ngModel)]=company.bankAccount.accountName required placeholder="Account Name">
+            </div>
+            <div class="row mt-1">
+                <label for="accountNumber" class="control-label col-md-3 text-right">A/C Number<span class="text-danger">*</span></label>
+                <input type="text" name="accountNumber" class="form-control col-md-6" [(ngModel)]=company.bankAccount.accountNumber required placeholder="Account Number">
+            </div>
+            <div class="row mt-1">
+                <label for="accountType" class="control-label col-md-3 text-right">A/C Type<span class="text-danger">*</span></label>
+                <select class="form-control col-md-6" name="accountType" [(ngModel)]="company.bankAccount.accountType" required placeholder="Select Superiority">
+                    <option value=null>--Select Account Type--</option>
+                    <option *ngFor="let accountType of bankAccount.accountTypes" [ngValue]="accountType">{{accountType}}</option>
+                </select>
+            </div>
+            <div class="row mt-1">
+                <label for="bank" class="control-label col-md-3 text-right">Bank<span class="text-danger">*</span></label>
+                <input type="text" name="bank" class="form-control col-md-6" [(ngModel)]=company.bankAccount.bank required placeholder="Bank Name">
+            </div>
+            <div class="row mt-1">
+                <label for="branchName" class="control-label col-md-3 text-right">Branch<span class="text-danger">*</span></label>
+                <input type="text" name="branchName" class="form-control col-md-6" [(ngModel)]=company.bankAccount.branchName required placeholder="Branch Name">
+            </div>
+            <div class="row mt-1">
+                <label *ngIf="company.id==null" for="currentBalance" class="control-label col-md-3 text-right">Initial Balance<span class="text-danger">*</span></label>
+                <label *ngIf="company.id!=null" for="currentBalance" class="control-label col-md-3 text-right">Current Balance<span class="text-danger">*</span></label>
+                <input *ngIf="company.id==null" type="number" name="currentBalance" class="form-control col-md-6" [(ngModel)]=company.bankAccount.currentBalance required placeholder="Initial Balance">
+                <input *ngIf="company.id!=null" type="number" name="currentBalance" class="form-control col-md-6" [(ngModel)]=company.bankAccount.currentBalance required placeholder="Current Balance">
+            </div>
+
+            <div class="footer text-center col-md-9 mt-2">
+                <button type="submit" class="btn btn-primary" style="width:18%;margin-right: 2px;" [disabled]="!f.valid">Save</button>
+                <button type="button" class="btn btn-danger" style="width:18%" routerLink="">Cancel</button>
+            </div>
+
+            <div class="alert alert-success mt-2" role="alert" *ngIf="successFlag">
+                Company Saved.
+            </div>
+        </form>
+    </div>
+    
+</div>
+
+

@@ -14,5 +14,7 @@ public interface EmployeeService {
 	
 	public List<Employee> getAll();
 	
+	public List<Employee> getSalarySheet();
+	
 	public void delete(Long id);
 }

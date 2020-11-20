@@ -1,5 +1,8 @@
 package com.rahul.ibcsprimax.entity;
 
+import java.beans.Transient;
+import java.util.Random;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
@@ -22,15 +26,29 @@ public class Employee {
 	private Integer employeeId;
 	private String address;
 	private String mobile;
+
 	
 	@JoinColumn(nullable=false)
 	@OneToOne
 	private Grade grade;
-	@OneToOne(cascade=CascadeType.REFRESH)
+	@OneToOne(cascade= {CascadeType.ALL,CascadeType.REFRESH})
+	@JoinColumn(name="bank_account_id", nullable = false)
 	private BankAccount bankAccount;
 	
+	@javax.persistence.Transient
+	private Payscale Payscale;
 	
 	
+	@PrePersist
+	void beforeSave(){
+		Random rand = new Random(); 
+        int empId = rand.nextInt(9999); 
+        
+	}
+	
+
+
+
 	public Long getId() {
 		return id;
 	}
@@ -72,6 +90,14 @@ public class Employee {
 	}
 	public void setBankAccount(BankAccount bankAccount) {
 		this.bankAccount = bankAccount;
+	}
+
+	public Payscale getPayscale() {
+		return Payscale;
+	}
+
+	public void setPayscale(Payscale payscale) {
+		Payscale = payscale;
 	}
 	
 	

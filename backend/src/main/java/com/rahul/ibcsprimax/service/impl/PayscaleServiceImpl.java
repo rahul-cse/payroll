@@ -22,8 +22,10 @@ public class PayscaleServiceImpl implements PayscaleService{
 	GradeRepository gradeRepository;
 
 	@Override
-	public void save(Payscale payscale) {
-		payscaleRepository.save(payscale);		
+	public Payscale save(Payscale payscale) {
+		calculateAllowance(payscale,payscale.getBasic());
+		payscaleRepository.save(payscale);
+		return payscale;
 	}
 	
 
@@ -55,12 +57,43 @@ public class PayscaleServiceImpl implements PayscaleService{
 			newPayscale.setGrade(grade);
 			basic+=5000;
 			newPayscale.setBasic(basic);
-			newPayscale.setHouseRent(basic*.20);
-			newPayscale.setMedicalAllowance(basic*.15);
+			calculateAllowance(newPayscale, basic);
 			newPayscale.setName(grade.getName());
 			payscaleList.add(newPayscale);
 		}
 		return payscaleList;
+	}
+	
+	public void calculateAllowance(Payscale payscale, Double basic) {
+		payscale.setHouseRent(basic*.20);
+		payscale.setMedicalAllowance(basic*.15);
+	}
+
+
+	@Override
+	public Payscale getById(Long id) {
+		return payscaleRepository.findById(id).get();
+	}
+
+
+	@Override
+	public Payscale update(Payscale payscale) {
+		calculateAllowance(payscale, payscale.getBasic());
+		if(payscale.getGrade().getGradeEnum().equals(GradeEnum.Six)) {
+			 List<Payscale> payscaleList=calculateOtherPayscale(payscale);
+			 payscaleList.add(payscale);
+			 payscaleRepository.saveAll(payscaleList);
+		}
+		else {
+			payscaleRepository.save(payscale);
+		}
+		return payscale;
+	}
+
+
+	@Override
+	public Payscale findByGrade(Grade grade) {
+		return payscaleRepository.findByGrade(grade);
 	}
 
 

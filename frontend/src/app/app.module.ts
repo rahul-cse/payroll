@@ -10,6 +10,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PayscaleComponent } from './payscale/payscale.component';
 import { PayscaleFormComponent } from './payscale/payscale-form/payscale-form.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { SalaryComponent } from './salary/salary.component';
+import { EmployeeFormComponent } from './employee/employee-form/employee-form.component';
+import { SalarySheetComponent } from './salary/salary-sheet/salary-sheet.component';
+import { CompanyComponent } from './company/company.component';
+import { SalaryStatementBalanceComponent } from './salary/salary-statement-balance/salary-statement-balance.component';
 
 
 @NgModule({
@@ -19,6 +25,12 @@ import { PayscaleFormComponent } from './payscale/payscale-form/payscale-form.co
     GradeFormComponent,
     PayscaleComponent,
     PayscaleFormComponent,
+    EmployeeComponent,
+    SalaryComponent,
+    EmployeeFormComponent,
+    SalarySheetComponent,
+    CompanyComponent,
+    SalaryStatementBalanceComponent,
   ],
   imports: [
     BrowserModule,

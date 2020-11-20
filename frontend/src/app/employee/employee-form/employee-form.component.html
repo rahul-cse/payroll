@@ -1,0 +1,62 @@
+<div class="row container">
+    <div class="box col-md-12">
+        <form class="box-body" (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <p class="text-center font-italic">-- Personal Details --</p>
+            <div class="row mt-1">
+                <label for="name" class="control-label col-md-3 text-right">Name<span class="text-danger">*</span></label>
+                <input type="text" name="name" class="form-control col-md-6" [(ngModel)]=emp.name required placeholder="Employee FullName">
+            </div>
+            <input type="hidden" name="id" [(ngModel)]=emp.id>
+            <div class="row mt-1">
+                <label for="mobile" class="control-label col-md-3 text-right">Mobile<span class="text-danger">*</span></label>
+                <input type="text" name="mobile" class="form-control col-md-6" [(ngModel)]=emp.mobile required placeholder="Mobile Number">
+            </div>
+            <div class="row mt-1">
+                <label for="address" class="control-label col-md-3 text-right">Address</label>
+                <textarea name="address" class="form-control col-md-6" [(ngModel)]=emp.address placeholder="Address"></textarea>
+            </div>
+            <div class="row mt-1">
+                <label for="grade" class="control-label col-md-3 text-right">Grades<span class="text-danger">*</span></label>
+                <select class="form-control col-md-6" name="grade" [(ngModel)]="emp.grade.id" required>
+                    <option value=null>--Select Rank/Grade--</option>
+                    <option *ngFor="let grade of grades" [ngValue]="grade.id">{{grade.name}}(Rank/Grade-{{grade.gradeEnum}})</option>
+                </select>
+            </div>
+            <p class="text-center font-italic">-- Bank Details --</p>
+            <div class="row mt-1">
+                <label for="accountName" class="control-label col-md-3 text-right">A/C Name<span class="text-danger">*</span></label>
+                <input type="text" name="accountName" class="form-control col-md-6" [(ngModel)]=emp.bankAccount.accountName required placeholder="Account Name">
+            </div>
+            <div class="row mt-1">
+                <label for="accountNumber" class="control-label col-md-3 text-right">A/C Number<span class="text-danger">*</span></label>
+                <input type="text" name="accountNumber" class="form-control col-md-6" [(ngModel)]=emp.bankAccount.accountNumber required placeholder="Account Number">
+            </div>
+            <div class="row mt-1">
+                <label for="accountType" class="control-label col-md-3 text-right">A/C Type<span class="text-danger">*</span></label>
+                <select class="form-control col-md-6" name="accountType" [(ngModel)]="emp.bankAccount.accountType" required placeholder="Select Superiority">
+                    <option value=null>--Select Account Type--</option>
+                    <option *ngFor="let accountType of bankAccount.accountTypes" [ngValue]="accountType">{{accountType}}</option>
+                </select>
+            </div>
+            <div class="row mt-1">
+                <label for="bank" class="control-label col-md-3 text-right">Bank<span class="text-danger">*</span></label>
+                <input type="text" name="bank" class="form-control col-md-6" [(ngModel)]=emp.bankAccount.bank required placeholder="Bank Name">
+            </div>
+            <div class="row mt-1">
+                <label for="branchName" class="control-label col-md-3 text-right">Branch<span class="text-danger">*</span></label>
+                <input type="text" name="branchName" class="form-control col-md-6" [(ngModel)]=emp.bankAccount.branchName required placeholder="Branch Name">
+            </div>
+
+            <div class="footer text-center col-md-9 mt-2">
+                <button type="submit" class="btn btn-primary" style="width:18%;margin-right: 2px;" [disabled]="!f.valid">Save</button>
+                <button type="button" class="btn btn-danger" style="width:18%" (click)=goBack()>Cancel</button>
+            </div>
+
+            <div class="alert alert-success mt-2" role="alert" *ngIf="successFlag">
+                Employee Saved.
+            </div>
+        </form>
+    </div>
+    
+</div>
+

@@ -313,6 +313,25 @@
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/payscale"><fa-icon [icon]="faMoneyBill" ></fa-icon> Payscale</a>
       </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/employee"><fa-icon [icon]="faUser" ></fa-icon> Employee</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/company"><fa-icon [icon]="faIndustry" ></fa-icon> Company</a>
+      </li>
+      
+      <li class="nav-item dropdown" routerLinkActive="active">
+        <a class="nav-link dropdown-toggle"  id="navbarDropdown" >
+          <fa-icon [icon]="faMoneyCheck" ></fa-icon> Salary
+        </a>
+        <div class="dropdown-menu-item" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/salarytransfer">Salary Transfer</a>
+          <!-- <div class="dropdown-divider"></div> -->
+          <a class="dropdown-item" routerLink="/salarysheet">Salary Sheet</a>
+          <a class="dropdown-item" routerLink="/salarystatement">Salary Statement & Balance</a>
+        </div>
+      </li>
+   
     </ul>
     
   </div>

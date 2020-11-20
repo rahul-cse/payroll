@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="box col-md-12">
+        <h5 class="text-center">Salary Transfer</h5>
+        <form>
+            <div class="row mt-1">
+                <label for="grade" class="control-label col-md-3 text-right">Employee<span class="text-danger">*</span></label>
+                <select class="form-control col-md-4" name="emp" [(ngModel)]="employee"  required (change)="onChangeEmp()">
+                    <option value=null>--Select Employee--</option>
+                    <option *ngFor="let emp of empList" [ngValue]="emp.id">{{emp.name}}</option>
+                </select>
+                <input type="number" *ngIf="balanceInput" name="companyBalance" [(ngModel)]="companyBalance" class="form-control col-md-2 ml-2" placeholder="Company : Current Balance">
+            </div>
+            <div class="row mt-1"  *ngIf="payscale!=null" >
+                <!-- <div class="col-md-7"> -->
+                    <label for="basic" class="control-label col-md-3 text-right">Basic</label>
+                    <label class="control-label col-md-4" style="margin-left: -15px">{{payscale.basic}}</label>
+                <!-- </div> -->
+                <div class="col-md-4" *ngIf="balanceInput">
+                    <span>Company's Current Balance: {{company.bankAccount.currentBalance}}</span>
+                </div>
+               
+            </div>
+            <div class="row mt-1"  *ngIf="payscale!=null" >
+                <label for="basic" class="control-label col-md-3 text-right">House Rent</label>
+                <label class="control-label col-md-4" style="margin-left: -15px">{{payscale.houseRent}}</label>
+                <div class="col-md-4" *ngIf="balanceInput">
+                    <button class="btn btn-warning" (click)="addBalance()">Add Balance</button>
+                </div>
+            </div>
+            <div class="row mt-1"  *ngIf="payscale!=null" >
+                <label for="basic" class="control-label col-md-3 text-right">Medical Allowance</label>
+                <label>{{payscale.medicalAllowance}}</label>
+            </div>
+            <div class="row mt-1"  *ngIf="payscale!=null" >
+                <label for="basic" class="control-label col-md-3 text-right text-success">Total Salary</label>
+                <label class="text-success">{{totalSalary}}</label>
+            </div>
+            <div class="footer text-center col-md-12 mt-2"  *ngIf="payscale!=null">
+                <hr>
+                <button class="btn btn-primary" (click)="onSubmit()">Transfer</button>
+            </div>
+        </form>
+        <div class="alert alert-success col-md-10 m-2" role="alert" *ngIf="successFlag">
+            Salary successfully transfered.
+        </div>
+        <div class="alert alert-success col-md-10 m-2" role="alert" *ngIf="addBalancceSuccesFlag">
+            Successfully Added.
+        </div>
+        
+    </div>
+</div>

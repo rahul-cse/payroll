@@ -1,0 +1,28 @@
+<div class="container mt-2">
+    <h5 class="text-center">Employee Setting</h5>
+    <table class="table table-hover" *ngIf=viewTable>
+        <thead class="table-info">
+            <tr>
+                <th>SL#</th>
+                <th>Name</th>
+                <th>Grade</th>
+                <th>Address</th>
+                <th>Mobile</th>
+                <th style="padding-right: 0"><span  style="color:blue;cursor:pointer" (click)=loadFormFunc() title="Add New"><fa-icon [icon]="faPlus"></fa-icon> Add</span></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let emp of empList;let i = index ">
+                <td>{{i+1}}</td>
+                <td>{{emp.name}}</td>
+                <td>{{emp.grade.name}}</td>
+                <td>{{emp.address}}</td>
+                <td>{{emp.mobile}}</td>
+                <td><span title="Edit" (click)="editFormFunc(emp.id)" style="cursor: pointer;color:orange"><fa-icon [icon]="faEdit"></fa-icon></span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <router-outlet></router-outlet>
+</div>
+

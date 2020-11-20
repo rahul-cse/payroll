@@ -1,0 +1,16 @@
+li.nav-item.dropdown{
+    cursor: pointer;
+    position: relative;
+}
+
+.dropdown-menu-item{
+    display: none;
+    position: absolute;
+    margin-left: -135px;
+    background-color: white;
+    z-index: 1;
+}
+
+li.nav-item.dropdown:hover .dropdown-menu-item  {
+    display: block;
+}

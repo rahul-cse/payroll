@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.rahul.ibcsprimax.enums.AccountTypeEnum;
+
 @Entity
 public class BankAccount {
 
@@ -16,6 +18,7 @@ public class BankAccount {
 	private Double currentBalance;
 	private String bank;
 	private String branchName;
+	private AccountTypeEnum accountType;
 	
 	public Long getId() {
 		return id;
@@ -52,6 +55,12 @@ public class BankAccount {
 	}
 	public void setBranchName(String branchName) {
 		this.branchName = branchName;
+	}
+	public AccountTypeEnum getAccountType() {
+		return accountType;
+	}
+	public void setAccountType(AccountTypeEnum accountType) {
+		this.accountType = accountType;
 	}
 	
 	
